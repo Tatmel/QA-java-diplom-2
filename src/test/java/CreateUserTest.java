@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import pojo.CreateUserRequest;
 
+import java.util.Objects;
+
 
 public class CreateUserTest {
     private UserClient userClient = new UserClient();
@@ -106,7 +108,7 @@ public class CreateUserTest {
 
     @After
     public void tearDown() {
-        if(accessToken != null) {
+        if( !(Objects.equals(accessToken, null)) ) {
             userClient.delete(accessToken)
                     .statusCode(202);
         }

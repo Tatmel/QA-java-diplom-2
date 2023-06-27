@@ -15,6 +15,8 @@ import org.junit.Test;
 import pojo.CreateOrderRequest;
 import pojo.CreateUserRequest;
 
+import java.util.Objects;
+
 public class CreateOrderTest {
     private UserClient userClient = new UserClient();
     private OrderClient orderClient = new OrderClient();
@@ -102,7 +104,7 @@ public class CreateOrderTest {
 
     @After
     public void tearDown() {
-        if(accessToken != null && accessToken != "") {
+        if( !(Objects.equals(accessToken, null)) && !(Objects.equals(accessToken, "")) ) {
             userClient.delete(accessToken)
                     .statusCode(202);
         }
